@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+@theme {
+  --color-pink: #ee93bc; /* Nargiz çəhrayısı, avatarın rəngi */
+  --color-raspberry: #b5236b; /* düymələr, qiymət, endirim faizi */
+  --color-raspberry-dark: #961c58;
+  --color-blush: #fff1f6; /* səhifə fonu */
+  --color-plum: #2a1822; /* əsas mətn */
+  --color-plum-soft: #7a6370; /* köhnə qiymət, köməkçi mətn */
+  --color-brass: #d9b26f; /* yalnız xətlər, çərçivələr, taksit nişanı */
+
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-onest), system-ui, sans-serif;
+
+  --radius-tile: 14px;
+}
+
+html {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--color-blush);
+  color: var(--color-plum);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Qiymət etiketi: kəsik küncü olan ценник */
+.price-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  background: var(--color-raspberry);
+  color: #fff;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.42em 0.95em 0.42em 0.6em;
+  clip-path: polygon(0 0, calc(100% - 0.55em) 0, 100% 50%, calc(100% - 0.55em) 100%, 0 100%);
+  border-radius: 6px 0 0 6px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.price-tag::before {
+  content: "";
+  width: 0.32em;
+  height: 0.32em;
+  border-radius: 999px;
+  background: var(--color-blush);
+  flex: none;
+}
+
+/* Hero axtarışı da ценник formasında */
+.price-search {
+  clip-path: polygon(22px 0, 100% 0, 100% 100%, 22px 100%, 0 50%);
+  border-radius: 0 12px 12px 0;
+  padding-left: 2.1rem !important;
+  position: relative;
+}
+.price-search::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  border-radius: 999px;
+  background: var(--color-pink);
+}
+
+/* Piştaxta kənarı: enli çəhrayı zolaq + nazik latun xətt */
+.counter-edge {
+  height: 14px;
+  background: var(--color-pink);
+  border-bottom: 1px solid var(--color-brass);
+}
+
+.tile {
+  background: #fff;
+  border-radius: var(--radius-tile);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+.tile:hover {
+  box-shadow: 0 6px 18px -10px rgb(42 24 34 / 0.35);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  transition: background-color 0.15s ease;
+  line-height: 1.1;
+  text-align: center;
+}
+.btn-primary {
+  background: var(--color-raspberry);
+  color: #fff;
+}
+.btn-primary:hover {
+  background: var(--color-raspberry-dark);
+}
+.btn-outline {
+  border: 1.5px solid var(--color-plum);
+  color: var(--color-plum);
+}
+.btn-outline:hover {
+  background: rgb(42 24 34 / 0.06);
+}
+.btn-wa {
+  background: #fff;
+  color: var(--color-plum);
+  border: 1.5px solid var(--color-plum);
+}
+.btn-wa:hover {
+  background: var(--color-blush);
+}
+
+.field {
+  width: 100%;
+  border: 1.5px solid rgb(42 24 34 / 0.18);
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  font-size: 16px;
+  color: var(--color-plum);
+}
+.field:focus {
+  outline: 2px solid var(--color-raspberry);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-raspberry);
+  outline-offset: 2px;
+}
